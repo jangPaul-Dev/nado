@@ -17,9 +17,9 @@ public class ServletRequestDataBinders {
 	public static Object bind(ServletRequest request,
 							 Class<?> dataType,
 							 String dataName) throws Exception {
-		// 생성해야 할 대상이 PrimitiveType일 경우(형변환을 해줘야할 경우를 말하는건가..?)
+		// 생성해야 할 대상이 PrimitiveTypeㅁㄴㅇㄹㅁㄴㅇㄹ일 경우(형변환을 해줘야할 경우를 말하는건가..?)
 		if(isPrimitiveType(dataType)) {
-			return createValueObject(dataType, 
+			return createValueObject(dataType, =====
 						request.getParameter(dataName));
 		}
 		// 일반 vo객체일 경우
