@@ -10,8 +10,7 @@ import nado.vo.MyTimeLine;
 import spms.dao.DataSource;
 
 public class MySqlMyPageDao implements MemberDao {
-	
-	
+		
 	public List<MyTimeLine> myWriteList() throws Exception {
 		Connection connection = null;
 		Statement stmt = null;
