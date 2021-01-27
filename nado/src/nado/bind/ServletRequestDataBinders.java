@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 public class ServletRequestDataBinders {
 	/* request : 매개변수 추출
 	 * dataType : 클래스 타입으로 객체 생성
-	 * dataName : 매개변수 이름
+	 * dataName : 매개변수 이름 
 	 * */
 	public static Object bind(ServletRequest request,
 							 Class<?> dataType,

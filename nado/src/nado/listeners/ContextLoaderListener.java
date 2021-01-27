@@ -4,7 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import nado.context.ApplicationContext;
 
-
+// 사실 뭔지 모릅니다만 기본패키지라고 생각햇 만들었습니다,,,,
 
 public class ContextLoaderListener {
 
