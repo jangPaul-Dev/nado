@@ -34,5 +34,4 @@ public class MyTimeLine {
 		this.mdate = mdate;
 	}
 	
-	
 }
