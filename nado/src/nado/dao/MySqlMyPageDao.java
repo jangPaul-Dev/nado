@@ -31,9 +31,9 @@ public class MySqlMyPageDao implements MemberDao {
 
 			while (rs.next()) {
 				myWrite.add(new MyTimeLine().setMno(rs.getInt("mno"))
-						.setUid(rs.getString("uid"))
-						.setMcontext(rs.getString("mcontext"))
-						.setMdate(rs.getDate("mdate")));
+											.setUid(rs.getString("uid"))
+											.setMcontext(rs.getString("mcontext"))
+											.setMdate(rs.getDate("mdate")));
 			}
 
 			return myWrite;
