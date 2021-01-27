@@ -18,7 +18,7 @@ import nado.annotation.Component;
  * 라고 합니다 하지만 저는 이해하지 못했습니다...,
  * */
 public class ApplicationContext {
-	// url : 대응 객체 *그렇습니다 해쉬테이블도 이해 못했지만 선생님은 다 뜻이있다고 생각합니다...
+	// url : 대응 객체 
 	Hashtable<String, Object> objTable = new Hashtable<String, Object>();
 
 	public Object getBean(String key) {
