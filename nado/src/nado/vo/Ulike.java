@@ -16,4 +16,8 @@ public class Ulike {
 	protected String development;
 	protected String concert;
 	
+	public int getUlike_uno() {
+		return ulike_uno;
+	}
+	
 }

@@ -5,33 +5,41 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import nado.vo.MyTimeLine;
 
-public class MySqlMyPageDao implements MemberDao {
+import javax.sql.DataSource;
+
+import nado.vo.MeetCard;
+import nado.vo.MyTimeLine;
+import nado.vo.Ulike;
+import nado.vo.User;
+
+public class MySqlMyPageDao extends UserDao {
 		
-	public List<MyTimeLine> myWriteList() throws Exception {
+	public List<User> myWriteList() throws Exception {
 		Connection connection = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		javax.sql.DataSource ds = null;
-		int curUserNo;	// 현재 로그인 한 사용자 번호, VO에서 받아오기
-		final String sqlSelect = "SELECT uno,mno " + "\r\n" + "FROM writer " + "\r\n"
-				+ "WHERE uno=" + curUserNo;
+		DataSource ds = null;
+		
+		int curUserNo = Ulike.getUlike_uno();	// 현재 로그인 한 사용자 번호, VO에서 받아오기
+		final String sqlSelect = "SELECT w_uno,w_mno FROM writer " + "\r\n"
+				+ "WHERE w_uno=" + curUserNo;
 
 		try {
 			// 커넥션풀에서 Connection객체를 빌려온다
 			connection = ds.getConnection();
-
 			stmt = connection.createStatement();
 			rs = stmt.executeQuery(sqlSelect);
 
-			ArrayList<MyTimeLine> myWrite = new ArrayList<MyTimeLine>();
+			ArrayList<User> myWrite = new ArrayList<User>();
 
 			while (rs.next()) {
-				myWrite.add(new MyTimeLine().setMno(rs.getInt("mno"))
-											.setUid(rs.getString("uid"))
-											.setMcontext(rs.getString("mcontext"))
-											.setMdate(rs.getDate("mdate")));
+				myWrite.add(new MeetCard()
+						.setmNo(rs.getInt("mNo"))
+						.setmContent(rs.getString("mContent"))
+						.setmDate(rs.getDate("mdate")));
+				myWrite.add(new User()
+						.setuId(rs.getString("uid")));
 			}
 
 			return myWrite;
@@ -52,10 +60,6 @@ public class MySqlMyPageDao implements MemberDao {
 				e.printStackTrace();
 			}
 
-			/* ds에서 제공하는 Connection객체의 close()의 의미는
-			 * 연결을 종료하는 것이 아니라
-			 * 객체를 ds내부의 커넥션 풀에 반납한다는 의미이다
-			 * */
 			try {
 				if(connection != null)
 					connection.close();
