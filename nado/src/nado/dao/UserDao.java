@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
-
 import nado.vo.User;
 
 public class UserDao {
@@ -24,17 +23,14 @@ public class UserDao {
 		try {
 			// 커넥션풀에서 Connection객체를 빌려온다
 			connection = ds.getConnection();
-			
 			stmt = connection.createStatement();
 			rs = stmt.executeQuery(sqlSelect);
-			
+
 			ArrayList<User> users = new ArrayList<User>();
-			
-			while(rs.next()) {
-				users.add(new User()
-					 .setuName(rs.getString("uname"))
-//					 .set
-						);
+
+			while (rs.next()) {
+				users.add(new User().setuName(rs.getString("uname")).setuId(rs.getString("uid"))); // mypage에서 필요해서
+																									// 넣었습니다
 			}
 			return users;
 
@@ -60,6 +56,6 @@ public class UserDao {
 				e.printStackTrace();
 			}
 		}
-
+	
 	} // List<USER> end
 } // class end
