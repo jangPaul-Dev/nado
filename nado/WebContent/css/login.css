@@ -1,0 +1,126 @@
+@charset "UTF-8";
+ * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      color: #333333;
+      background-color: aqua;
+
+    }
+
+    footer {
+      width: 100%;
+      height: 150px;
+      text-align: center;
+      background-color: blue;
+      color: whitesmoke;
+    }
+
+    footer h1 {
+      margin: 0;
+      font-size: 60px;
+      display: block;
+    }
+
+    section {
+      width: 100%;
+      height: 855px;
+      margin: 0 auto;
+      background-color: yellow;
+    }
+
+    .content {
+      width: 1000px;
+      height: 855px;
+      margin: 0 auto;
+      position: relative;
+      background-color: tomato;
+    }
+
+    .mockup {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 550px;
+      height: 855px;
+      display: inline-block;
+      float: left;
+      background-color: hotpink;
+    }
+
+    .loginContainer {
+      width: 450px;
+      height: 855px;
+      display: inline-block;
+      float: right;
+      /* border: 1px solid gray; */
+      background-color: indigo;
+    }
+
+    .loginBox {
+      width: 400px;
+      height: 330px;
+      /* display: block; */
+      margin: 70px 25px 10px 25px;
+      /* border: 1px solid gray; */
+      border: 1px solid #ccc;
+      background-color: lightcoral;
+    }
+
+    #logoPic {
+      width: 400px;
+      height: 130px;
+      /* display: block; */
+      background-color: lightyellow;
+    }
+
+    #loginForm {
+      width: 400px;
+      height: 200px;
+      /* display: block; */
+      background-color: lightcyan;
+    }
+
+    .inputData{
+       width: 350px;
+       height: 50px;
+       margin: 0px auto 10px; 
+       display: block;
+       border: 1px solid #ccc;
+       border-radius: 5px;
+       font-size: 16px;
+    }
+
+    input:focus{
+      outline: none;
+    }
+
+    #login_btn{
+      width: 350px;
+      height: 50px;
+      margin: 0px auto 10px; 
+      display: block;
+      font-size: 16px;
+    }
+
+    #signupBox {
+      width: 400px;
+      height: 80px;
+      display: table;
+      margin: 0px 25px;
+      /* border: 1px solid gray; */
+      background-color: lightgreen;
+    }
+
+    #signupBox p {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    #signupBox a {
+      text-decoration: none;
+      font-weight: bold;
+    }
