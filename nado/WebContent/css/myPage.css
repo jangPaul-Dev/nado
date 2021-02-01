@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+	.container{
+		width:940px;
+        height:310px;
+        margin:auto;
+        background-color: gray;
+	}
+	
+    .profile {
+    	width: 600px;
+    	height:270px;
+    	float:center; 
+    	bckground-color: #fddd71;    
+    }
+    
+    .mypic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 20px 20px;
+        display: inline-block;
+        position: relative;
+        background-color:aquamarine;
+    }
+
+    .id {
+        display: inline;
+        position:absolute;
+        width: 720px;
+        height: 50px;
+        margin: 20px 0px;
+        background-color:rgb(248, 184, 160);
+    }
+
+    .gender {
+        display: inline;
+        position:absolute;
+        width: 720px;
+        height: 50px;
+        margin: 70px 0px;
+        background-color:rgb(172, 215, 231);
+    }
+
+    .location {
+        display: inline;
+        position:absolute;
+        width: 720px;
+        height: 50px;
+        margin: 120px 0px;
+        background-color: rgb(252, 151, 235);
+    }
+
+    .interest {
+        width: 900px;
+        height: 100px;
+        margin: 0px 20px;
+        background-color: rgb(245, 245, 133);
+        text-align:center;
+    }
+    .mypost {
+        width:940px;
+        height:400px;
+        background-color: burlywood;
+        text-align:center;
+        margin:auto;
+    }

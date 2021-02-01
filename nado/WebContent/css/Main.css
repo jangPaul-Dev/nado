@@ -1,0 +1,235 @@
+@charset "EUC-KR";
+
+
+body{
+    padding: 0;
+    margin: 0;
+}
+.post{
+	width: 636px;
+	height: 100vh;
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.p-section{
+    width: 100vw;
+    height: 100%;
+    background-color: rgb(245, 245, 245);
+}
+.mini-section{
+    max-width: 935px;
+    margin: 0 auto;
+}
+.r-side{
+    height: 100vh;
+    width: 300px;
+    position: absolute;
+    margin-top: 2%;
+    display: inline-block;
+}
+.profile{
+    width: 293px;
+    height: 60px;
+}
+.myphoto{
+    border-radius: 70%;
+    margin-left: 8%;
+    width: 50px;
+    height: 50px;
+    display: inline;
+    margin-top: 5px;
+}
+#userid{
+    display: inline;
+    position: absolute;
+    margin-left: 20px;
+}
+#logout{
+    display: inline;
+    position: absolute;
+    margin-left: 130px;
+    margin-top: 6%;
+}
+
+.find{
+    width: 100%;
+    height: 118px;
+    background-color: white;
+    border-radius: 10px;
+    border:1px solid lightgray;
+}
+
+
+/* ÆË¾÷Ã¢ CSS*/
+
+.newPost{
+    width: 500px;
+    height: 600px;
+    background-color: ghostwhite;
+    display: none;           
+    z-index: 999;
+    position: fixed;
+    top: 107px;
+    left: 30%;
+    right: 0;
+    border-radius: 10px;
+}
+.rayPost{
+    margin: 22% auto;
+    width: 348px;
+    height: 261px;
+    margin-bottom: 18px;
+}
+
+input{
+    background: 0 0;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    box-sizing: border-box;
+    color: #262626;
+    height: 32px;
+    padding: 0 10px;
+    width: 90%;
+    background-color:white;
+    float: right;
+    font-size: 13px;
+}
+
+
+textarea{
+    background: 0 0;
+    border: 1px solid #dbdbdb;
+    background-color:white;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #262626;
+    font-size: 16px;
+    padding: 0 10px;
+    width: 90%;
+    height: 50px;
+    float: right;
+    font-size: 13px;
+}
+
+
+.title{
+    font-weight: bold;
+}
+
+.filebox label{
+	float:right;
+    height: 18px;
+    display: inline-block;
+    padding: .5em 0.75em;
+	color: #999; 
+	font-size: inherit; 
+	line-height: normal; 
+	vertical-align: middle; 
+	background-color: #fdfdfd; 
+	cursor: pointer; 
+	border: 1px solid #ebebeb; 
+	border-bottom-color: #e2e2e2; 
+	border-radius: .25em;
+}
+
+#select_moption{
+	width: 90%;
+    float: right;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    height: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+	
+    
+.filebox input[type="file"] { 
+	position: absolute; 
+	width: 1px; 
+	height: 1px; 
+	padding: 0; 
+	margin: -1px; 
+	overflow: hidden; 
+	clip:rect(0,0,0,0); 
+	border: 0; 
+}
+
+.filebox .uploadfile { 
+	float:left;
+    width: 75%;
+    height: 36px;
+    display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+	vertical-align: middle; 
+	background-color: #f5f5f5; 
+	border: 1px solid #ebebeb; 
+	border-bottom-color: #e2e2e2; 
+	border-radius: .25em; 
+	-webkit-appearance: none; 
+	-moz-appearance: none; 
+	appearance: none; 
+}
+
+
+
+#crtPost{
+	height: 37px;
+    margin-left: 15.5%;
+    background-color: hsl(173deg 82% 46%);
+    color: white;
+    width: 343px;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    font-size: 17px;
+}
+
+/* °Ô½Ã±Û ·¹ÀÌ¾Æ¿ô */
+ul{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style:none;
+}
+.postImg{
+	width: 100px;
+	height: 100px;
+}
+
+.cardform{
+	margin-top: 60px;
+    width: 633px;
+    height: 800px;
+    overflow: hidden;
+    background-color: rgb(240, 240, 240);
+    border-radius: 20px;
+    border:1px solid lightgray;
+}
+.cardtitle{
+    width: 100%;
+    height: 60px;
+    background-color: white;
+}
+.cardimg{
+    height: 614px;
+    background-color: rgb(202, 207, 209);
+}
+.ctt{
+    margin-left: 20px;
+    float: left;
+}
+.cdate{
+    margin-right: 20px;
+    float: right;
+}
+.cardcontent{
+	width: 100%;
+    background-color: whilte;
+    height: 104px;
+}
+

@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+
+body{
+    margin: 0 auto;
+}
+.content{
+    width: 636px;
+    height: 100vh;
+    border-style: solid;
+    margin: 0 auto;
+    max-width: 600px;
+    position: relative;
+    width: 100%
+}
+ .content ul li{
+    border:1px solid #ccc;
+    border-radius:5px;
+    width: 500px;
+    margin: 20px;
+    height: auto;
+    background-color:#d9d4e2;
+    display: inline-block;
+}
+
+#more{
+    margin-left: 440px;
+}
