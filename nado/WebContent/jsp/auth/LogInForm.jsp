@@ -15,7 +15,7 @@
     <div class="content">
       <div class="mockup">
         <img src="https://cdn.dribbble.com/users/104117/screenshots/3802691/attachments/858398/iphonex_-white-.png"
-          width="auto" height="855px">
+          width="auto" height="845px">
       </div>
       <div class="loginContainer">
         <div class="loginBox">
@@ -29,13 +29,13 @@
           </form>
         </div>
         <div id="signupBox">
-          <p>계정이 없으신가요? <a href="../user/signup.do">가입하기</a></p>
+          <p>계정이 없으신가요?&nbsp;<a href="../user/signup.do">가입하기</a></p>
         </div>
       </div>
     </div>
   </section>
   <footer>
-    <h1>nado</h1>
+     <p>COPYRIGHT © 2021 NADO.<br/> ALL RIGHTS RESERVED.</p>
   </footer>
 </body>
 </html>

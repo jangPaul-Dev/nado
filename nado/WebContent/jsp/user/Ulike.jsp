@@ -44,51 +44,51 @@
                      <input type="hidden" name="ulike_uno" value="${user.uNo}">
                         <div class="databox" id="dataBoxWrap">
                             <span class="smallcheck">
-                                <label for="food" class="checklabel">food</label>
+                                <label for="food" class="checklabel">맛집</label>
                                 <input class="checkbox" id="food" type="checkbox" name="food" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="travel" class="checklabel">travel</label>
+                                <label for="travel" class="checklabel">여행</label>
                                 <input class="checkbox" id="travel" type="checkbox" name="travel" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="photo" class="checklabel">photo</label>
+                                <label for="photo" class="checklabel">사진</label>
                                 <input class="checkbox" id="photo" type="checkbox" name="photo" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="movie" class="checklabel">movie</label>
+                                <label for="movie" class="checklabel">영화</label>
                                 <input class="checkbox" id="movie" type="checkbox" name="movie" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="reading" class="checklabel">reading</label>
+                                <label for="reading" class="checklabel">독서</label>
                                 <input class="checkbox" id="reading" type="checkbox" name="reading" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="volunteer" class="checklabel">volunteer</label>
+                                <label for="volunteer" class="checklabel">봉사활동</label>
                                 <input class="checkbox" id="volunteer" type="checkbox" name="volunteer" value="N">
                             </span> 
                             <span class="smallcheck">
-                                <label for="health" class="checklabel">health</label>
+                                <label for="health" class="checklabel">건강/운동</label>
                                 <input class="checkbox" id="health" type="checkbox" name="health" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="buying" class="checklabel">buying</label>
+                                <label for="buying" class="checklabel">공동구매</label>
                                 <input class="checkbox" id="buying" type="checkbox" name="buying" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="game" class="checklabel">game</label>
+                                <label for="game" class="checklabel">게임</label>
                                 <input class="checkbox" id="game" type="checkbox" name="game" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="etc" class="checklabel">etc</label>
+                                <label for="etc" class="checklabel">기타</label>
                                 <input class="checkbox" id="etc" type="checkbox" name="etc" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="development" class="checklabel">development</label>
+                                <label for="development" class="checklabel">자기개발</label>
                                 <input class="checkbox" id="development" type="checkbox" name="development" value="N">
                             </span>
                             <span class="smallcheck">
-                                <label for="concert" class="checklabel">concert</label>
+                                <label for="concert" class="checklabel">공연</label>
                                 <input class="checkbox" id="concert" type="checkbox" name="concert" value="N">
                             </span>
                         </div>
@@ -105,7 +105,7 @@
         </div>
     </section>
     <footer>
-        <h1>nado</h1>
+         <p>COPYRIGHT © 2021 NADO.<br/> ALL RIGHTS RESERVED.</p>
     </footer>
 </body>
 </html>

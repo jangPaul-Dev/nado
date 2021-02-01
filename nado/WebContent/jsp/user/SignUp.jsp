@@ -56,7 +56,7 @@
         </div>
     </section>
     <footer>
-        <h1>nado</h1>
+         <p>COPYRIGHT © 2021 NADO.<br/> ALL RIGHTS RESERVED.</p>
     </footer>
 </body>
 </html>
