@@ -20,7 +20,7 @@
       <div class="loginContainer">
         <div class="loginBox">
           <div id="logoPic">
-
+            <!--   <img src="../img/Asset 4.png">-->
           </div>
           <form action="login.do" method="post" id="loginForm">
               <input class="inputData" type="text" name="uId" placeholder=" ID를 입력하세요" >
@@ -29,7 +29,7 @@
           </form>
         </div>
         <div id="signupBox">
-          <p>계정이 없으신가요? <a href="#">가입하기</a></p>
+          <p>계정이 없으신가요? <a href="../user/signup.do">가입하기</a></p>
         </div>
       </div>
     </div>

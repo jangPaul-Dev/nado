@@ -9,9 +9,9 @@ public class User {
 	protected String uName;
 	protected Date uBirth;	
 	protected String uSex;
-	protected int phoneNum;
-	protected String email;
-	protected String address;
+	protected int uphoneNum;
+	protected String uemail;
+	protected String uaddress;
 	protected String useYn;
 
 	public int getuNo() {
@@ -59,25 +59,25 @@ public class User {
 		this.uSex = uSex;
 		return this;
 	}
-	public int getPhoneNum() {
-		return phoneNum;
+	public int getUphoneNum() {
+		return uphoneNum;
 	}
-	public User setPhoneNum(int phoneNum) {
-		this.phoneNum = phoneNum;
+	public User setUphoneNum(int uphoneNum) {
+		this.uphoneNum = uphoneNum;
 		return this;
 	}
-	public String getEmail() {
-		return email;
+	public String getUemail() {
+		return uemail;
 	}
-	public User setEmail(String email) {
-		this.email = email;
+	public User setUemail(String uemail) {
+		this.uemail = uemail;
 		return this;
 	}
-	public String getAddress() {
-		return address;
+	public String getUaddress() {
+		return uaddress;
 	}
-	public User setAddress(String address) {
-		this.address = address;
+	public User setUaddress(String uaddress) {
+		this.uaddress = uaddress;
 		return this;
 	}
 	public String getUseYn() {

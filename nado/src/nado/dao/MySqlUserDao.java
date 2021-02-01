@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import nado.vo.Ulike;
 //import nado.annotation.Component;
 import nado.vo.User;
 
@@ -20,65 +21,16 @@ public class MySqlUserDao implements UserDao{
 	public void setDataSource(DataSource ds) {
 		this.ds = ds;
 	}
-
-	public List<User> selectList() throws Exception {
-		Connection connection = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		final String sqlSelect = "SELECT mno,mname,email,cre_date" + "\r\n" + "FROM members" + "\r\n"
-				+ "ORDER BY mno ASC";
-
-		try {
-			// 커넥션풀에서 Connection객체를 빌려온다
-			connection = ds.getConnection();
-
-			stmt = connection.createStatement();
-			rs = stmt.executeQuery(sqlSelect);
-
-			ArrayList<User> users = new ArrayList<User>();
-
-			while (rs.next()) {
-				users.add(new User().setuNo(rs.getInt("mno")));
-			}
-
-			return users;
-
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			try {
-				if (stmt != null)
-					stmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			/* ds에서 제공하는 Connection객체의 close()의 의미는
-			 * 연결을 종료하는 것이 아니라
-			 * 객체를 ds내부의 커넥션 풀에 반납한다는 의미이다
-			 * */
-			try {
-				if(connection != null)
-					connection.close();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
+	
+	//연정: 회원가입 쿼리
 	public int insert(User user) throws Exception {
 		Connection connection = null;
 		int result = 0;
 		PreparedStatement stmt = null;
-		final String sqlInsert = "INSERT INTO user(uid, upwd, uname, ubirth, usex, phoneNum, email, address)" + "\r\n"
+		final String sqlInsert = "INSERT INTO user(uid, upwd, uname, ubirth, usex, uphoneNum, uemail, uaddress)" + "\r\n"
 				                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
+		
 		try {
 			// 커넥션풀에서 Connection객체를 빌려온다
 			connection = ds.getConnection();
@@ -89,10 +41,12 @@ public class MySqlUserDao implements UserDao{
 			stmt.setString(3, user.getuName());
 			stmt.setDate(4, user.getuBirth());
 			stmt.setString(5, user.getuSex());
-			stmt.setInt(6, user.getPhoneNum());
-			stmt.setString(7, user.getEmail());
-			stmt.setString(8, user.getAddress());
+			stmt.setInt(6, user.getUphoneNum()); //ereor! not null이면 안넘어감 하하
+			stmt.setString(7, user.getUemail()==null?"":user.getUemail());   //ereor! not null이면 안넘어감 하하
+			stmt.setString(8, user.getUaddress()==null?"":user.getUaddress());   //ereor! not null이면 안넘어감 하하
+					
 			result = stmt.executeUpdate();
+
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -115,59 +69,25 @@ public class MySqlUserDao implements UserDao{
 		return result;
 	}
 
-	public int delete(int no) throws Exception {
-		Connection connection = null;
-		int result = 0;
-		Statement stmt = null;
-		final String sqlDelete = "DELETE FROM USER WHERE UNO=";
 
-		try {
-			// 커넥션풀에서 Connection객체를 빌려온다
-			connection = ds.getConnection();
-
-			stmt = connection.createStatement();
-			result = stmt.executeUpdate(sqlDelete + no);
-
-		} catch (Exception e) {
-			throw e;
-
-		} finally {
-			try {
-				if (stmt != null)
-					stmt.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			// 다 썼으면 반납하자
-			try {
-				if(connection != null)
-					connection.close();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		return result;
-	}
-
-	public User selectOne(int no) throws Exception {
+	//연정: Ulike를 위한 회원번호
+	public User selectOne(String id) throws Exception {
 		Connection connection = null;
 		User user = null;
-		Statement stmt = null;
+		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-		final String sqlSelectOne = "SELECT MNO,EMAIL,MNAME,CRE_DATE FROM MEMBERS" + " WHERE MNO=";
+		final String sqlSelectOne = "SELECT UNO,UID FROM USER" + " WHERE UID=?";
 
 		try {
 			// 커넥션풀에서 Connection객체를 빌려온다
 			connection = ds.getConnection();
-			stmt = connection.createStatement();
-			rs = stmt.executeQuery(sqlSelectOne + no);
+			stmt = connection.prepareStatement(sqlSelectOne);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
 			if (rs.next()) {
-				user = new User().setuNo(rs.getInt("MNO")).setEmail(rs.getString("EMAIL"))
-						.setuName(rs.getString("MNAME"));
-
+				user = new User().setuNo(rs.getInt("uno")).setuId(rs.getString("uid"));
+		
 			} else {
 				throw new Exception("해당 번호의 회원을 찾을 수 없습니다.");
 			}
@@ -198,47 +118,17 @@ public class MySqlUserDao implements UserDao{
 		return user;
 	}
 
-	public int update(User user) throws Exception {
-		Connection connection = null;
-		int result = 0;
-		PreparedStatement stmt = null;
-		final String sqlUpdate = "UPDATE MEMBERS SET EMAIL=?,MNAME=?,MOD_DATE=now()" + " WHERE MNO=?";
-		try {
-			// 커넥션풀에서 Connection객체를 빌려온다
-			connection = ds.getConnection();
-			stmt = connection.prepareStatement(sqlUpdate);
-			stmt.setString(1, user.getEmail());
-			stmt.setString(2, user.getuName());
-			stmt.setInt(3, user.getuNo());
-			result = stmt.executeUpdate();
 
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			try {
-				if (stmt != null)
-					stmt.close();
-			} catch (Exception e) {
-			}
-
-			// 다 썼으면 반납하자
-			try {
-				if(connection != null)
-					connection.close();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		return result;
-	}
-
+	//연정
+	//+주옥 : 로그인 성공시, 전체 데이터 vo에 넣어준다.
 	public User exist(String userId, String userPwd) throws Exception {
 		Connection connection = null;
 		User user = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		final String sqlExist = "SELECT UNO, UNAME FROM USER" + " WHERE UID=? AND UPWD=?";
+		final String sqlExist = 
+				"SELECT uno, uid, upwd, uname, ubirth, usex, uphonenum, uemail, uaddress, useyn \r\n" + 
+				"FROM USER  WHERE UID=? AND UPWD=?";
 
 		try {
 			// 커넥션풀에서 Connection객체를 빌려온다
@@ -249,9 +139,19 @@ public class MySqlUserDao implements UserDao{
 			stmt.setString(2, userPwd);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
-				user = new User().setuNo(rs.getInt("UNO"))
-								.setuName(rs.getString("UNAME"));
-//				user = new User().setuId(rs.getString("UID"));
+				
+				//0131 주옥 추가 :  vo에 객체담기
+				user = new User().setuNo(rs.getInt("uno"))
+								.setuId(rs.getString("uid"))
+								.setuPwd(rs.getString("upwd"))
+								.setuName(rs.getString("uname"))
+								.setuBirth(rs.getDate("ubirth"))
+								.setuSex(rs.getString("usex"))
+								.setUphoneNum(rs.getInt("uphoneNum"))
+								.setUemail(rs.getString("uemail"))
+								.setUaddress(rs.getString("uaddress"))
+								.setUseYn(rs.getString("useYn"));
+
 			} else {
 				return null;
 			}
@@ -278,6 +178,61 @@ public class MySqlUserDao implements UserDao{
 			}
 		}
 
-		return user;
+		return user; 
 	}
+	
+    //연정: 회원 관심사 생성
+	@Override
+	public int insertInterest(Ulike ulike) throws Exception {
+		Connection connection = null;
+		int result = 0;
+		PreparedStatement stmt = null;
+		User user = new User();
+		System.out.println(user.getuNo());
+		
+		
+		final String sqlInsert = "INSERT INTO ULIKE(ulike_uno, food, travel, photo, movie, reading, volunteer, health, buying, game, etc, development, concert)" + "\r\n"
+				                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try {
+			// 커넥션풀에서 Connection객체를 빌려온다
+			connection = ds.getConnection();
+
+			stmt = connection.prepareStatement(sqlInsert);
+			stmt.setInt(1, ulike.getUlike_uno()); //방금 회원가입한 user의 uno(자동생성) 
+			stmt.setString(2, ulike.getFood());
+			stmt.setString(3, ulike.getTravel());
+			stmt.setString(4, ulike.getPhoto());
+			stmt.setString(5, ulike.getMovie());
+			stmt.setString(6, ulike.getReading());
+			stmt.setString(7, ulike.getVolunteer());
+			stmt.setString(8, ulike.getHealth());
+			stmt.setString(9, ulike.getBuying());
+			stmt.setString(10, ulike.getGame());
+			stmt.setString(11, ulike.getEtc());
+			stmt.setString(12, ulike.getDevelopment());
+			stmt.setString(13, ulike.getConcert());
+			result = stmt.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			// 다 썼으면 반납하자
+			try {
+				if(connection != null)
+					connection.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+	
 }

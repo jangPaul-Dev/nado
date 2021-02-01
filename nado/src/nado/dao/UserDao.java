@@ -2,6 +2,7 @@ package nado.dao;
 
 import java.util.List;
 
+import nado.vo.Ulike;
 import nado.vo.User;
 
 /* 굳이 MemberDao 인터페이스를 만든 이유는?
@@ -13,10 +14,9 @@ import nado.vo.User;
  * */
 public interface UserDao {
 
-	public List<User> selectList() throws Exception;
-	public int insert(User user) throws Exception;
-	public int delete(int no) throws Exception;
-	public User selectOne(int no) throws Exception;
-	public int update(User user) throws Exception;
-	public User exist(String uId, String uPwd) throws Exception;
+	public int insert(User user) throws Exception; //연정-회원가입 쿼리
+	public int insertInterest(Ulike ulike) throws Exception;//연정: 회원 관심사 생성
+    public User selectOne(String id) throws Exception;//연정-ulike를 위한 회원번호
+    public User exist(String uId, String uPwd) throws Exception;//연정 -로그인, 주옥: 로그인 성공시, 전체 데이터 vo 
+
 }
