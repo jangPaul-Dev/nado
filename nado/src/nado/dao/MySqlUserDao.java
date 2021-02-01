@@ -41,9 +41,9 @@ public class MySqlUserDao implements UserDao{
 			stmt.setString(3, user.getuName());
 			stmt.setDate(4, user.getuBirth());
 			stmt.setString(5, user.getuSex());
-			stmt.setInt(6, user.getUphoneNum()); //ereor! not null이면 안넘어감 하하
-			stmt.setString(7, user.getUemail()==null?"":user.getUemail());   //ereor! not null이면 안넘어감 하하
-			stmt.setString(8, user.getUaddress()==null?"":user.getUaddress());   //ereor! not null이면 안넘어감 하하
+			stmt.setInt(6, user.getUphoneNum());
+			stmt.setString(7, user.getUemail()==null?"":user.getUemail());   
+			stmt.setString(8, user.getUaddress()==null?"":user.getUaddress());   
 					
 			result = stmt.executeUpdate();
 		} catch (Exception e) {
@@ -200,18 +200,18 @@ public class MySqlUserDao implements UserDao{
 
 				stmt = connection.prepareStatement(sqlInsert);
 				stmt.setInt(1, ulike.getUlike_uno()); //방금 회원가입한 user의 uno(자동생성) 
-				stmt.setString(2, ulike.getFood());
-				stmt.setString(3, ulike.getTravel());
-				stmt.setString(4, ulike.getPhoto());
-				stmt.setString(5, ulike.getMovie());
-				stmt.setString(6, ulike.getReading());
-				stmt.setString(7, ulike.getVolunteer());
-				stmt.setString(8, ulike.getHealth());
-				stmt.setString(9, ulike.getBuying());
-				stmt.setString(10, ulike.getGame());
-				stmt.setString(11, ulike.getEtc());
-				stmt.setString(12, ulike.getDevelopment());
-				stmt.setString(13, ulike.getConcert());
+				stmt.setString(2, ulike.getFood()==null?"N":ulike.getFood());
+				stmt.setString(3, ulike.getTravel()==null?"N":ulike.getTravel());
+				stmt.setString(4, ulike.getPhoto()==null?"N":ulike.getPhoto());
+				stmt.setString(5, ulike.getMovie()==null?"N":ulike.getMovie());
+				stmt.setString(6, ulike.getReading()==null?"N":ulike.getReading());
+				stmt.setString(7, ulike.getVolunteer()==null?"N":ulike.getVolunteer());
+				stmt.setString(8, ulike.getHealth()==null?"N":ulike.getHealth());
+				stmt.setString(9, ulike.getBuying()==null?"N":ulike.getBuying());
+				stmt.setString(10, ulike.getGame()==null?"N":ulike.getGame());
+				stmt.setString(11, ulike.getEtc()==null?"N":ulike.getEtc());
+				stmt.setString(12, ulike.getDevelopment()==null?"N":ulike.getDevelopment());
+				stmt.setString(13, ulike.getConcert()==null?"N":ulike.getConcert());
 				result = stmt.executeUpdate();
 			} catch (Exception e) {
 				throw e;
