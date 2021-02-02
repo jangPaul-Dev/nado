@@ -29,7 +29,7 @@ for(int i=0; i<column.length; i++){
 			<c:if test="${ulike.buying eq 'y'}">buying</c:if>
 			<c:if test="${ulike.game eq 'y'}">game</c:if>
 			<c:if test="${ulike.etc eq 'y'}">etc</c:if>
-			<c:if test="${ulike.developement eq 'y'}">developement</c:if>
+			<c:if test="${ulike.development eq 'y'}">development</c:if>
 			<c:if test="${ulike.concert eq 'y'}">concert</c:if>
 			<c:if test="${ulike.reading eq 'y'}">reading</c:if>				
 			<br/>		
