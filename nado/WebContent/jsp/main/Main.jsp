@@ -32,7 +32,7 @@
 	    	if(window.FileReader){ // modern browser 
 	    		var fileup= $(this)[0].files[0].name; 
 	    	} else { // old IE var 
-	    		fileup = $(this).val().split('/').pop().split('\\').pop(); // ÆÄÀÏ¸í¸¸ ÃßÃâ 
+	    		fileup = $(this).val().split('/').pop().split('\\').pop(); // íŒŒì¼ëª…ë§Œ ì¶”ì¶œ 
 	    	}
 	    	$(this).siblings(".uploadfile").val(fileup)	    
 	    })
@@ -93,10 +93,11 @@
 	               <div class="profile">
 	                   <img class="myphoto" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/133893295_839193073524616_5799409343695929979_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=pFkMnKJxCOAAX9QJPel&tp=1&oh=79a76e50dd7a5069036523a57c71a977&oe=603A0A23">
 	                   <p id="userid">${user.uName}</p>
-	                   <button id="logout" onclick='location.href="../auth/logout.do"'>·Î±×¾Æ¿ô</button>
+	                   <button id="logout" onclick='location.href="../auth/logout.do"'>ë¡œê·¸ì•„ì›ƒ</button>
 	                   <button id="writePost">post</button>
-	                   <button id="test" onclick="location.href='../jsp/myPage/myPage.jsp'">¾æ ±×·¡</button>
-	                   <button id="test" onclick="location.href='../user/list.do'">ddd</button>
+	                   <button id="test" onclick="location.href='../user/list.do'">ddd</button> 
+	                   <button id="mypage" 
+	                   onclick="location.href='../myPage/myPage.do?${user.uId}?${user.uSex}?${user.uaddress}'">my page</button>
 	               </div>
 	           </div>
 	       </section>
@@ -107,46 +108,46 @@
 		                <form action="meetAdd.do" method="post">
 		                    <table class="rayPost">
 		                        <tr>
-		                            <td class="title">¸ğ ÀÓ ¸í </td>
-		                            <td colspan="3"><input name="mtitle" placeholder="ex)ÂŞ²Ù¹Ì°¡ ¸Ô°í½ÍÀº ÀÌÃÌ·¯ ±¸ÇÔ"></td>
+		                            <td class="title">ëª¨ ì„ ëª… </td>
+		                            <td colspan="3"><input name="mtitle" placeholder="ex)ì­ˆê¾¸ë¯¸ê°€ ë¨¹ê³ ì‹¶ì€ ì´ì´ŒëŸ¬ êµ¬í•¨"></td>
 		                        </tr>
 		                        <tr>
-		                            <td class="title">¸ğÁı±¸ºĞ</td>
+		                            <td class="title">ëª¨ì§‘êµ¬ë¶„</td>
 		                            <td colspan="3">
 		                                <select id="select_moption"name="moption">
-		                                    <option value="food">À½½Ä</option>
-		                                    <option value="travle">¿©Çà</option>
-		                                    <option value="photo">»çÁø</option>
-		                                    <option value="movie">¿µÈ­</option>
-		                                    <option value="reading">µ¶¼­</option>
-		                                    <option value="volunteer">ÀÚ¿øºÀ»ç</option>
-		                                    <option value="health">¿îµ¿</option>
-		                                    <option value="buying">¼îÇÎ</option>
-		                                    <option value="game">°ÔÀÓ</option>
-		                                    <option value="developement">°³¹ß</option>
-		                                    <option value="etc">±âÅ¸</option>
+		                                    <option value="food">ìŒì‹</option>
+		                                    <option value="travle">ì—¬í–‰</option>
+		                                    <option value="photo">ì‚¬ì§„</option>
+		                                    <option value="movie">ì˜í™”</option>
+		                                    <option value="reading">ë…ì„œ</option>
+		                                    <option value="volunteer">ìì›ë´‰ì‚¬</option>
+		                                    <option value="health">ìš´ë™</option>
+		                                    <option value="buying">ì‡¼í•‘</option>
+		                                    <option value="game">ê²Œì„</option>
+		                                    <option value="developement">ê°œë°œ</option>
+		                                    <option value="etc">ê¸°íƒ€</option>
 		                                </select>
 		                            </td>
 		                        </tr>
 		                        <tr>
-		                        	<td class="title">¸ğÁıÀÎ¿ø</td>
-		                            <td colspan="3"><input name="maxuser" placeholder="ÃÖ´ë 4ÀÎ"></td>
+		                        	<td class="title">ëª¨ì§‘ì¸ì›</td>
+		                            <td colspan="3"><input name="maxuser" placeholder="ìµœëŒ€ 4ì¸"></td>
 		                        </tr>
 		                        <tr>
-		                            <td class="title">»ó¼¼³»¿ë</td>
-		                            <td colspan="3"><textarea name="mcontent" placeholder="»ó¼¼È÷ ÀÔ·ÂÇÒ¼ö·Ï nado°¡ »¡¸® ¸ğÀÔ´Ï´Ù"></textarea></td>
+		                            <td class="title">ìƒì„¸ë‚´ìš©</td>
+		                            <td colspan="3"><textarea name="mcontent" placeholder="ìƒì„¸íˆ ì…ë ¥í• ìˆ˜ë¡ nadoê°€ ë¹¨ë¦¬ ëª¨ì…ë‹ˆë‹¤"></textarea></td>
 		                        </tr>
 		                        <tr>
 		                            <td colspan="4">
 			                            <div class="filebox">
-				                            <input class="uploadfile" value="ÆÄÀÏ¼±ÅÃ" disabled="disabled">
-				                            <label for="editfile">¾÷·Îµå</label>
+				                            <input class="uploadfile" value="íŒŒì¼ì„ íƒ" disabled="disabled">
+				                            <label for="editfile">ì—…ë¡œë“œ</label>
 				                            <input type="file" id="editfile" class="upload-hidden">
 			                            </div>
 		                            </td>
 		                        </tr>
 		                    </table>
-		                    <div><button id="crtPost"type="submit">º¸³»±â</button></div>
+		                    <div><button id="crtPost"type="submit">ë³´ë‚´ê¸°</button></div>
 		                </form>                    
 		            </div>
 		        </div>
