@@ -23,27 +23,25 @@ public class SqlMyProfileDao  {
 		Connection connection = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		User user = new User();
+		/*User user = new User();
 
 		int myUserNo = user.getuNo();
-		System.out.println(myUserNo);
+		System.out.println(myUserNo);*/
 		
 
 		try { // 커넥션풀에서 Connection객체를 빌려온다 
 			connection = ds.getConnection(); 
 			stmt =connection.createStatement();		
-			final String sqlSelect = "SELECT * FROM user WHERE uno = ";
-			rs = stmt.executeQuery(sqlSelect+myUserNo);
-			
-
-			
-			ArrayList<User> myProfile = new ArrayList<User>();
+			final String sqlSelect = "SELECT * FROM user";
+			User mypage = null;
+			rs = stmt.executeQuery(sqlSelect);
 
 			while (rs.next()) {
-				myProfile.add(new User().setuId(rs.getString("uid")).setuSex(rs.getString("usex"))
-						.setUaddress(rs.getString("address")));
+				mypage =new User().setuId(rs.getString("uid"))
+					  .setuSex(rs.getString("usex"))
+					  .setUaddress(rs.getString("uaddress"));
 			}
-			return myProfile;
+			return mypage;
 
 		} catch (Exception e) {
 			throw e;
