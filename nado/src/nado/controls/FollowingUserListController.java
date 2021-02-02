@@ -29,3 +29,4 @@ public class FollowingUserListController implements Controller {
 	}
 
 }
+
