@@ -6,8 +6,8 @@ import nado.annotation.Component;
 import nado.dao.SqlMyProfileDao;
 
 @Component("/myPage/myPage.do")
-public class MyProfileController implements Controller {
-
+public class MyProfileController implements Controller, DataBinding {
+	
 	SqlMyProfileDao myProfile = null;
 
 	public MyProfileController selectMyProfile(SqlMyProfileDao myProfile) throws Exception {
@@ -21,4 +21,10 @@ public class MyProfileController implements Controller {
 		
 		return "/jsp/myPage/myPage.jsp";
 	}
+	@Override
+	public Object[] getDataBinders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
