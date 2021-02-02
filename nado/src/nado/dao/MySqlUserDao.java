@@ -242,7 +242,7 @@ public class MySqlUserDao implements UserDao{
 		Statement stmt = null;
 		ResultSet rs = null;
 
-		final String sqlSelect = "SELECT DISTINCT user.uId, user.uName, user.uBirth, user.uSex" + "\r\n" + 
+		final String sqlSelect = "SELECT DISTINCT user.uId, user.uName, user.uBirth, user.uSex, user.uaddress" + "\r\n" + 
 								  "FROM user, follow" + "\r\n"+ "where user.uno=follow.from_user";
 
 
@@ -259,7 +259,8 @@ public class MySqlUserDao implements UserDao{
 				users.add(new User().setuId(rs.getString("uId"))
 									.setuName(rs.getString("uName"))
 									.setuBirth(rs.getDate("uBirth"))
-									.setuSex(rs.getString("uSex")));
+									.setuSex(rs.getString("uSex"))
+									.setUaddress(rs.getString("uAddress")));
 			}
 
 			return users;
@@ -406,7 +407,7 @@ public int delete(int to_user) throws Exception {
 @Override
 	public User selectOne(User uid) throws Exception {
 		Connection connection = null;
-	//				Ulike ulike = null;
+	//	Ulike ulike = null;
 		User user = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -453,6 +454,66 @@ public int delete(int to_user) throws Exception {
 	
 		return uid;
 	}
+
+@Override
+public Guest g_select() throws Exception {
+	Connection connection = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	/* int guno = Follow.from_user; */
+	
+	final String sqlSelect = "SELECT DISTINCT user.uId, user.uName, user.uBirth, user.uSex" + "\r\n" + 
+							  "FROM user, ulike" + "\r\n"+ "where user.uno=ulike.ulike_uno";
+
+
+	try {
+		// 커넥션풀에서 Connection객체를 빌려온다
+		connection = ds.getConnection();
+
+		stmt = connection.createStatement();
+		rs = stmt.executeQuery(sqlSelect);
+
+		ArrayList<Guest> guest = new ArrayList<Guest>();
+
+		while (rs.next()) {
+			guest.add(new Guest().setgId(rs.getString("uId"))
+								.setgName(rs.getString("uName"))
+								.setgBirth(rs.getDate("uBirth"))
+								.setgSex(rs.getString("uSex")));
+			System.out.println(rs.getString("uId"));
+		}
+
+		return null;
+
+	} catch (Exception e) {
+		throw e;
+	} finally {
+		try {
+			if (rs != null)
+				rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			if (stmt != null)
+				stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		/* ds에서 제공하는 Connection객체의 close()의 의미는
+		 * 연결을 종료하는 것이 아니라
+		 * 객체를 ds내부의 커넥션 풀에 반납한다는 의미이다
+		 * */
+		try {
+			if(connection != null)
+				connection.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+			}
+		}
+	}
+
 
 
 
