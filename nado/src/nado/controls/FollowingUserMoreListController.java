@@ -24,20 +24,21 @@ public class FollowingUserMoreListController implements Controller, DataBinding 
 
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
-		model.put("users", userDao.selectList());
-		String uid = (String)model.get("uid");
- 
+		model.put("users", userDao.g_select()); 
 		
 		return "/jsp/user/FollowingUserMoreList.jsp";
 	}
 
 	@Override
 	public Object[] getDataBinders() {
-		// key값 이름, 자동으로 생성해야 할 클래스 타입
 		return new Object[] {
-			"uid", String.class
-		};
+				"users", nado.vo.User.class
+			};
 	}
+
+	
 	
 } // class end
+
+
 
