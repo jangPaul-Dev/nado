@@ -56,7 +56,7 @@ public class SqlMyPageDao implements MyPageDao {
 						.setDevelopment(rs.getString("development")).setConcert(rs.getString("concert")));
 			}
 			
-			System.out.println(myLike);
+			//System.out.println(myLike);
 			//myLike를 풀어서, 배열에 넣는다.
 			
 			/* String[] ResultMyLike = null; */
