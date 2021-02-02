@@ -33,20 +33,24 @@ public class UlikeAddController implements Controller, DataBinding {
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
 		Ulike ulike = (Ulike)model.get("ulike");
-		
-//		if(ulike.getFood() == null) {
-//			return "/jsp/user/ulike.jsp"; //jsp에서 넘어가기 때문에 if로 다시 검사 X .do로 들어오면 계속 들어감..
-//		
-//		}else {
-//			ServletContext ctx = ((HttpSession)model.get("session")).getServletContext();
-//			int no = (int) ctx.getAttribute("uno");
-//			ctx.removeAttribute("uno");
-	
-			int result = userDao.insertInterest(ulike);
-//			System.out.println(result);
-			return "redirect:../auth/login.do"; //수정
-//		}
+        
+		int result = userDao.insertInterest(ulike);		
+			
+		return "redirect:../auth/login.do"; 
+
 	}
-
-
 }
+
+
+
+//if(ulike.getFood() == null) {
+//return "/jsp/user/ulike.jsp"; //jsp에서 넘어가기 때문에 if로 다시 검사 X .do로 들어오면 계속 들어감..
+//
+//}else {
+//ServletContext ctx = ((HttpSession)model.get("session")).getServletContext();
+//int no = (int) ctx.getAttribute("uno");
+//ctx.removeAttribute("uno");
+//
+//int result = userDao.insertInterest(ulike);		
+//return "redirect:../auth/login.do"; 
+//}

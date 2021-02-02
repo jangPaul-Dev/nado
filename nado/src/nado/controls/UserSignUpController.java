@@ -37,18 +37,24 @@ public class UserSignUpController implements Controller, DataBinding {
 		
 		}else {
 			userDao.insert(newUser);
-//			User user = userDao.selectOne(newUser.getuId());
-////			model.put("uno", user.getuNo());
-//			HttpSession session = (HttpSession)model.get("session");
-//			session.getServletContext().setAttribute("uno", user.getuNo());
+
 			User user = userDao.selectOne(newUser.getuId());
 			model.put("user", user);
-			return "/jsp/user/Ulike.jsp";
-//			return "../auth/login.do"; 
 			
-			//${uno}
+			return "/jsp/user/Ulike.jsp";
+
 		}
 	}
 
-
 }
+
+//User user = userDao.selectOne(newUser.getuId());
+////model.put("uno", user.getuNo());
+//HttpSession session = (HttpSession)model.get("session");
+//session.getServletContext().setAttribute("uno", user.getuNo());
+//User user = userDao.selectOne(newUser.getuId());
+//model.put("user", user);
+//return "/jsp/user/Ulike.jsp";
+//return "../auth/login.do"; 
+
+//${uno}

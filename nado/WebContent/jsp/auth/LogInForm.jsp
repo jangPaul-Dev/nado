@@ -14,8 +14,7 @@
   <section>
     <div class="content">
       <div class="mockup">
-        <img src="https://cdn.dribbble.com/users/104117/screenshots/3802691/attachments/858398/iphonex_-white-.png"
-          width="auto" height="845px">
+        <img src="../img/phone2.png" width="auto" height="845px">
       </div>
       <div class="loginContainer">
         <div class="loginBox">
