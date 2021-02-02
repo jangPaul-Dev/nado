@@ -3,32 +3,73 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" type="text/css" href="../css/Header.css?after" />
 <link rel="stylesheet" type="text/css" href="../css/myPage.css?after" />
+<script type="text/javascript">
 
+var uri = location.href
+var values = uri.split("?")
+
+var id = values[1]
+var sex = values[2]
+var birth = values[3]
+
+console.log(values)
+
+$(document).ready(function() {
+        $('#id').val(id);
+        $('#sex').val(sex);
+        $('#address').val(address);
+        
+    });
+
+</script>
 <html>
 
-<title>나의 정보</title>
-<jsp:include page="../main/Header.jsp" />
+<title>My page</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <%
 	String value1 = request.getParameter("ulike");
 %>
 </head>
 
 <body>
-
+<jsp:include page="../main/Header.jsp" />
 		<div class="container">
+			<h1>My page</h1>
 			<div class="profile">
-				<!--  <div class="mypic">
-				<img src="${meetCard.mimg}">
-				</div> 유저프로필 사진이 없어ㅠ-->
+		<input id="id" type="text" class="inputbox" size="50" />
+		<input id="sex" type="text" class="inputbox" size="50" />
+		<input id="address" type="text" class="inputbox" size="50" />
+		<c:out value="${myProfile.uId}" /> 
+		
+			<div class="mypic">
+				<!--<img id="pic">-->
+			</div>
+			<div class="info">
 				<ul>
-					<c:forEach var="user" items="${myProfile}">
-						<c:out value="${user.uId}, ${user.uSex}, ${user.uaddress}" />
-
-					</c:forEach>
+					<li class="id">
+						<c:forEach
+							var="user-id" items="${myProfile}">
+							<c:out value="${user.uId}" />
+						</c:forEach>
+					</li>
+					<li class="gender">
+						<c:forEach
+							var="user-gender" items="${myProfile}">
+							<c:out value="${user.uSex}>" />
+						</c:forEach>
+					</li>
+					<li class="location">
+						<c:forEach
+							var="user-address" items="${myProfile}">
+							<c:out value="${user.uAddress}" />
+						</c:forEach>
+					</li>
 				</ul>
 			</div>
+		</div>
 			<div class="like">
-				<c:forEach var="ulike" items="${ulike}">
+				<c:forEach var="ulike" items="${myLike}">
 					<c:if test="${ulike.food eq 'y'}">
         	맛집
          </c:if>
@@ -80,7 +121,7 @@
 				</div>
 			</section>
 		</div>
-	</form>
+	
 </body>
 
 </html>
